@@ -1,16 +1,28 @@
-Gem::Specification.new do |s|
-  s.name = "tx"
-  s.version = "0.0.5"
-  s.authors = ["Hiroshi Ichikawa"]
-  s.date = "2010-09-19"
-  s.description = "Ruby 1.8/1.9 binding of Tx, a library for a compact trie data structure"
-  s.email = "gimite+txruby@gmail.com"
-  s.extensions = ["ext/extconf.rb"]
-  s.extra_rdoc_files = ["README.txt"]
-  s.files = ["README.txt", "lib/tx.rb", "lib/i386-msvcrt/tx_core.so", "ext/depend", "ext/tx_swig.h", "ext/tx.cpp", "ext/tx_swig.i", "ext/swig.patch", "ext/Makefile", "ext/tx_swig_wrap.cxx", "ext/tx.hpp", "ext/tx_swig.cpp", "ext/extconf.rb", "ext/ssv.cpp", "ext/ssv.hpp", "test/test_tx.rb"]
-  s.has_rdoc = true
-  s.homepage = "http://gimite.net/en/index.php?tx-ruby"
-  s.rdoc_options = ["--quiet", "--title", "tx-ruby Reference", "--main", "README.txt"]
-  s.require_paths = ["lib"]
-  s.summary = "Ruby 1.8/1.9 binding of Tx, a library for a compact trie data structure"
+# coding: utf-8
+lib = File.expand_path("../lib", __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require "tx/version"
+
+Gem::Specification.new do |spec|
+  spec.name          = "tx"
+  spec.version       = Tx::VERSION
+  spec.authors       = ["Hiroshi Ichikawa"]
+  spec.email         = "gimite+txruby@gmail.com"
+
+  spec.summary       = "Ruby 1.8/1.9 binding of Tx, a library for a compact trie data structure"
+  spec.description   = "Ruby 1.8/1.9 binding of Tx, a library for a compact trie data structure"
+  spec.homepage      = "http://gimite.net/en/index.php?tx-ruby"
+
+  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
+    f.match(%r{^(test|spec|features)/})
+  end
+  spec.bindir        = "exe"
+  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.require_paths = ["lib"]
+  spec.extensions    = ["ext/tx_core/extconf.rb"]
+
+  spec.add_development_dependency "bundler", "~> 1.15"
+  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rake-compiler"
+  spec.add_development_dependency "minitest", "~> 5.0"
 end

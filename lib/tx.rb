@@ -1,4 +1,4 @@
-require "tx_core"
+require "tx/tx_core"
 require "forwardable"
 
 

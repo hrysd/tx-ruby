@@ -1,15 +1,8 @@
-# -*- encoding: UTF-8 -*-
-
-$KCODE = "u"
-$LOAD_PATH.unshift("./lib", "./ext")
-require "test/unit"
-require "enumerator"
-require "tempfile"
-require "tx"
+require "test_helper"
 
 TEST_ENCODING = RUBY_VERSION >= "1.9.0" ? Encoding::UTF_8 : nil
 
-class TC_TxIndex < Test::Unit::TestCase
+class TC_TxIndex < Minitest::Test
     
     def setup
       @builder = Tx::Builder.new()
@@ -50,7 +43,7 @@ class TC_TxIndex < Test::Unit::TestCase
     end
     
     def test_open
-      assert_raise(IOError) do
+      assert_raises(IOError) do
         Tx::Index.new("noexist.index")
       end
     end
@@ -62,7 +55,7 @@ class TC_TxIndex < Test::Unit::TestCase
     
 end
 
-class TC_TxIndexMultiByte < Test::Unit::TestCase
+class TC_TxIndexMultiByte < Minitest::Test
     
     def setup
       @builder = Tx::Builder.new()
@@ -100,7 +93,7 @@ class TC_TxIndexMultiByte < Test::Unit::TestCase
     
 end
 
-class TC_TxMap < Test::Unit::TestCase
+class TC_TxMap < Minitest::Test
     
     def setup
       @builder = Tx::MapBuilder.new()
@@ -145,7 +138,7 @@ class TC_TxMap < Test::Unit::TestCase
     
 end
 
-class TC_TxMapMultiByte < Test::Unit::TestCase
+class TC_TxMapMultiByte < Minitest::Test
     
     def setup
       @builder = Tx::MapBuilder.new()
