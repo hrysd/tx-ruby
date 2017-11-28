@@ -1,0 +1,11 @@
+sudo: false
+cache: bundler
+language: ruby
+dist: trusty
+
+rvm:
+  - 2.4.2
+
+install:
+  - bundle install
+  - bundle exec rake
