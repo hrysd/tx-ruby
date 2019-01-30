@@ -1,3 +1,4 @@
+# encoding: utf-8
 require "test_helper"
 
 TEST_ENCODING = RUBY_VERSION >= "1.9.0" ? Encoding::UTF_8 : nil
