@@ -4,7 +4,14 @@ language: ruby
 dist: trusty
 
 rvm:
-  - 2.4.2
+  - 1.8.7
+  - 1.9.3
+  - 2.0.0
+  - 2.1.9
+  - 2.2.9
+  - 2.4.5
+  - 2.5.3
+  - 2.6.1
 
 install:
   - bundle install
